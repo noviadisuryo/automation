@@ -1,8 +1,8 @@
-name: Newman API Tests
+name: Newman
 on: [push]
 
 jobs:
-  test-api:
+  API-Test:
     runs-on: ubuntu-latest
     steps:
     # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
