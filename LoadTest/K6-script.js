@@ -27,7 +27,6 @@ export default function () {
 
 export function handleSummary(data) {
   return {
-    "new2.html": htmlReport(data), // show report in html based format.
-    'stdout': textSummary(data, { indent: ' ', enableColors: true }), // Show the text summary to stdout format...
+    "summary.html": htmlReport(data), // show report in html based format.
   };
 }
