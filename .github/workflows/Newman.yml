@@ -26,7 +26,7 @@ jobs:
         
    # Run the POSTMAN collection
       - name: Run API Tests
-        run: newman run "https://api.getpostman.com/collections/${{ COLLECTION_ID }}?apikey=${{ API_KEY }}" --environment "https://api.getpostman.com/environments/${{ ENV_ID }}?apikey=${{ API_KEY }}"
+        run: newman run "https://api.getpostman.com/collections/${{ secrets.COLLECTION_ID }}?apikey=${{ secrets.API_KEY }}" --environment "https://api.getpostman.com/environments/${{ secrets.ENV_ID }}?apikey=${{ secrets.API_KEY }}"
       
    # Upload the contents of Test Results directory to workspace
       - name: Output the run Details
