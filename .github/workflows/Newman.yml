@@ -26,7 +26,7 @@ jobs:
         
    # Run the POSTMAN collection
       - name: Run API Tests
-        run: newman run "https://api.getpostman.com/collections/${{ secrets.COLLECTION_ID }}?apikey=${{ secrets.API_KEY }}" --environment "https://api.getpostman.com/environments/${{ secrets.ENV_ID }}?apikey=${{ secrets.API_KEY }}"      
+        run: newman run "https://api.getpostman.com/collections/${{ secrets.COLLECTION_ID }}?apikey=${{ secrets.API_KEY }}" --environment "https://api.getpostman.com/environments/${{ secrets.ENV_ID }}?apikey=${{ secrets.API_KEY }}" -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html      
    # Upload the contents of Test Results directory to workspace
       - name: Output the run Details
         uses: actions/upload-artifact@v2
