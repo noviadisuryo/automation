@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: K6 Local
 
 # Controls when the workflow will run
 on:
@@ -27,4 +27,4 @@ jobs:
       - name: Run local k6 test
         uses: grafana/k6-action@v0.2.0
         with:
-          filename: ".LoadTest/K6-script.js"
+          filename: "/LoadTest/K6-script.js"
