@@ -31,12 +31,12 @@ jobs:
           cloud: true
           token: ${{ secrets.K6_CLOUD_API_TOKEN }}
 
-        - name: Upload html report for job 1
-              uses: actions/upload-artifact@v2
-              with:
-                #html file name define in k6 code
-                name: summary
-                # path in our github repo
-                path: summary.html
-                # available time period file after that is automatically remove from the workspace
-                retention-days: 2
+      - name: Upload html report for job 1
+        uses: actions/upload-artifact@v2
+        with:
+          #html file name define in k6 code
+          name: summary
+          # path in our github repo
+          path: summary.html
+          # available time period file after that is automatically remove from the workspace
+          retention-days: 2
