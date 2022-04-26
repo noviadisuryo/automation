@@ -1,4 +1,4 @@
-name: Newman
+name: Newman Online
 on: [push]
 
 jobs:
