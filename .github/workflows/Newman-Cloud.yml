@@ -1,4 +1,4 @@
-name: Newman Online
+name: Newman Cloud
 on: [push]
 
 jobs:
