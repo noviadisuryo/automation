@@ -14,3 +14,17 @@ jobs:
         run: npm install
       - name: Cypress run
         uses: cypress-io/github-action@v2
+
+      - name: Copy test execution videos
+        run: |
+          mkdir public
+          cp -r cypress/videos public/videos
+          - name: Merge test results into one
+            run: npm run report:merge
+          - name: Generate HTML report
+            run: npm run report:generate
+          - name: Output the run Details
+                  uses: actions/upload-artifact@v2
+                  with:
+                    name: UI-Test-Results
+                    path: testResults
