@@ -23,8 +23,8 @@ jobs:
             run: npm run report:merge
           - name: Generate HTML report
             run: npm run report:generate
-          - name: Output the run Details
-                  uses: actions/upload-artifact@v2
+          - name: Download the build folders
+                  uses: actions/download-artifact@v2
                   with:
-                    name: UI-Test-Results
-                    path: testResults
+                    name: build
+                    path: build
