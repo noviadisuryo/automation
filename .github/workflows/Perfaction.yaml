@@ -35,3 +35,4 @@ jobs:
         with:
           name: jmeter-results
           path: result.jtl
+          args: “-e -o ./Report”
