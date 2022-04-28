@@ -26,7 +26,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: JMeter Test
-        uses: QAInsights/PerfAction@v3.0
+        uses: QAInsights/PerfAction@3.0
         with:
           test-plan-path: ./LoadTest/LoadTest.jmx
           args: "-e -o ./Report"
