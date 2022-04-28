@@ -12,9 +12,5 @@ describe('Cypress UI Automation Sample', () => {
         cy.contains('QA Engineer').should('be.visible')
         // Click on Image TAB
         cy.get('.MUFPAc > :nth-child(2) > a').click()
-        // Click MORE Tab
-        cy.get('.rIbAWc > .NZmxZe').click()
-        // Click MAP
-        cy.get('.ErsxPb-AHUcCb > .SiT4cd-ibnC6b-bN97Pc > a').click()
    })
 })

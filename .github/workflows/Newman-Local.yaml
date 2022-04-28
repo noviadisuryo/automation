@@ -1,5 +1,9 @@
 name: Newman Local
-on: [push]
+on:
+  push:
+    paths:
+      - 'ApiTest/**'
+    branches: [ master ]
 
 jobs:
   API-Test:
