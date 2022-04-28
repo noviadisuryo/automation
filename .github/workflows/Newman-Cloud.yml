@@ -1,9 +1,5 @@
 name: Newman Cloud
-on:
-  push:
-    paths:
-      - 'ApiTest/**'
-    branches: [ master ]
+on: [push]
 
 jobs:
   API-Test:

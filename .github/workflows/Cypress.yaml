@@ -1,8 +1,6 @@
 name: Cypress
-on:
-  push:
-    paths:
-      - 'cypress/**'
+on: [push]
+
 jobs:
   cypress-run:
     runs-on: ubuntu-latest
