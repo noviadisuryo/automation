@@ -29,7 +29,7 @@ jobs:
         uses: QAInsights/PerfAction@v3.0
         with:
           test-plan-path: ./LoadTest/LoadTest.jmx
-          args: "-e -o ./Report"
+          args: "-e -o ./Report -l jtl/result.jtl"
 
       - name: Upload Results
         uses: actions/upload-artifact@v3
