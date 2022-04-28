@@ -2,7 +2,7 @@
 
 describe('Cypress UI Automation Sample', () => {
     it('Google Search', () => {
-        // Visit Bukalapak
+        // Visit Google
         cy.visit('https://www.google.com/')
 
         // Wait Page Load
