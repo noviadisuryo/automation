@@ -29,10 +29,10 @@ jobs:
         uses: QAInsights/PerfAction@3.0
         with:
           test-plan-path: './LoadTest/LoadTest.jmx'
+          args: “-e -o”
 
       - name: Upload Results
         uses: actions/upload-artifact@v3
         with:
           name: jmeter-results
-          path: result.jtl
-          args: “-e -o ./Report”
+          path: reports/
