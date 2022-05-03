@@ -1,7 +1,7 @@
 name: Newman Local
 on:
   schedule:
-  - cron: '00 06 * * *'
+  - cron: '00 07 * * *'
 
 jobs:
   API-Test:
