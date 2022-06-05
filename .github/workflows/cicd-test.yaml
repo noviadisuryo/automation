@@ -1,0 +1,89 @@
+name: CICD Test
+on: [push]
+
+jobs:
+
+  API-Test:
+    runs-on: ubuntu-latest
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - uses: actions/checkout@v2
+
+      # Install Node on the runner
+      - name: Install Node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16.x'
+
+      # Install the newman command line utility and also install the html extra reporter
+      - name: Install newman
+        run: |
+          npm install -g newman
+          npm install -g newman-reporter-htmlextra
+
+      # Make directory to upload the test results
+      - name: Make Directory for results
+        run: mkdir -p testResults
+
+      # Run the POSTMAN collection
+      - name: Run API Tests
+        run: newman run "https://api.getpostman.com/collections/${{ secrets.COLLECTION_ID }}?apikey=${{ secrets.API_KEY }}" --environment "https://api.getpostman.com/environments/${{ secrets.ENV_ID }}?apikey=${{ secrets.API_KEY }}" -r htmlextra --reporter-htmlextra-export testResults/htmlreport.html
+      # Upload the contents of Test Results directory to workspace
+      - name: Output the run Details
+        uses: actions/upload-artifact@v2
+        with:
+          name: APITest-Results
+          path: testResults
+
+  k6_load_test:
+    name: k6 Load Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v1
+
+      - name: Run local k6 test
+        uses: grafana/k6-action@v0.2.0
+        with:
+          filename: "./LoadTest/K6-script.js"
+          cloud: true
+          token: ${{ secrets.K6_CLOUD_API_TOKEN }}
+
+      - name: Upload html report for job 1
+        uses: actions/upload-artifact@v2
+        with:
+          #html file name define in k6 code
+          name: summary
+          # path in our github repo
+          path: summary.html
+          # available time period file after that is automatically remove from the workspace
+          retention-days: 2
+
+  cypress-run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - name: Install dependencies
+        run: npm install
+      - name: Cypress run
+        uses: cypress-io/github-action@v2
+        with:
+          browser: chrome
+          headless: true
+      - uses: actions/upload-artifact@v2
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/screenshots
+          # Test run video was always captured, so this action uses "always()" condition
+      - uses: actions/upload-artifact@v2
+        if: always()
+        with:
+          name: cypress-videos
+          path: cypress/videos

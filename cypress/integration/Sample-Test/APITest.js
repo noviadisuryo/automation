@@ -1,6 +1,6 @@
 /// <reference types="cypress" />
 
-describe('Reqres.in API Test', () => {
+describe('Noviadi Reqres.in API Sample Test', () => {
     context('GET /users', () => {
         it('should return a list contain all users', () => {
             cy.request({
