@@ -114,4 +114,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: noviadisuryo/docker-repo/app:latest
+          tags: noviadisuryo/docker-repo:latest
